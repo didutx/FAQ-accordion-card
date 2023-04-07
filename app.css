@@ -37,10 +37,6 @@ main {
     max-width: 900px;
 }
 
-.rotate180 {
-    transform: rotate(180deg);
-}
-
 .image-container {
     min-width: 369px;
     height: 485px;
