@@ -1,6 +1,5 @@
 
 const allInfoDivs = [...document.querySelectorAll(".info")];
-let prevItem = null;
 
 [...document.querySelectorAll(".top")].forEach(function (item) {
     item.addEventListener("click", (event) => {
@@ -18,26 +17,18 @@ let prevItem = null;
             infoDiv.style.display = "block";
             question.style.fontWeight = "700";
             arrowImage.style.transform = "rotate(-180deg)"
-            // 
-            if (prevItem !== null) {
-                const prevInfoDiv = prevItem.parentElement.querySelector(".info");
-                const prevQuestion = prevItem.querySelector(".question p");
-                const prevArrowImage = prevItem.querySelector(".image-arrow img");
-
-                prevInfoDiv.style.display = "block";
-                prevQuestion.style.fontWeight = "400";
-                prevArrowImage.style.transform = "rotate(-180deg)"
-            }
-            prevItem = item;
-            //   
 
             allInfoDivs.forEach((currDiv) => {
                 if (currDiv !== infoDiv) {
                     currDiv.style.display = "none";
-                    currDiv.previousElementSibling.querySelector(".question").style.fontWeight = "400";
-                    currDiv.previousElementSibling.querySelector(".image-arrow img").style.transform = "rotate(0deg)"
+                    const currQuestion = currDiv.parentElement.querySelector(".question p");
+                    const currArrowImage = currDiv.parentElement.querySelector(".image-arrow img");
+                    currQuestion.style.fontWeight = "400";
+                    currArrowImage.style.transform = "rotate(0deg)";
                 }
             });
         }
     });
 });
+
+
