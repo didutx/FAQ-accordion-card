@@ -25,7 +25,7 @@ let prevItem = null;
                 const prevArrowImage = prevItem.querySelector(".image-arrow img");
 
                 prevInfoDiv.style.display = "block";
-                prevQuestion.style.fontWeight = "700";
+                prevQuestion.style.fontWeight = "400";
                 prevArrowImage.style.transform = "rotate(-180deg)"
             }
             prevItem = item;
