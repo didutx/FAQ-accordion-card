@@ -24,9 +24,9 @@ let prevItem = null;
                 const prevQuestion = prevItem.querySelector(".question p");
                 const prevArrowImage = prevItem.querySelector(".image-arrow img");
 
-                prevInfoDiv.style.display = "none";
+                prevInfoDiv.style.display = "block";
                 prevQuestion.style.fontWeight = "400";
-                prevArrowImage.style.transform = "rotate(180deg)"
+                prevArrowImage.style.transform = "rotate(-180deg)"
             }
             prevItem = item;
             //   
