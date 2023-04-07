@@ -1,5 +1,6 @@
 
 const allInfoDivs = [...document.querySelectorAll(".info")];
+let prevItem = null;
 
 [...document.querySelectorAll(".top")].forEach(function (item) {
     item.addEventListener("click", (event) => {
@@ -12,21 +13,31 @@ const allInfoDivs = [...document.querySelectorAll(".info")];
         if (window.getComputedStyle(infoDiv, null).display === "block") {
             infoDiv.style.display = "none";
             question.style.fontWeight = "400";
-            arrowImage.classList.remove("rotate180");
+            arrowImage.style.transform = "rotate(0deg)"
         } else {
             infoDiv.style.display = "block";
             question.style.fontWeight = "700";
-            arrowImage.classList.add("rotate180");
+            arrowImage.style.transform = "rotate(-180deg)"
+            // 
+            if (prevItem !== null) {
+                const prevInfoDiv = prevItem.parentElement.querySelector(".info");
+                const prevQuestion = prevItem.querySelector(".question p");
+                const prevArrowImage = prevItem.querySelector(".image-arrow img");
+
+                prevInfoDiv.style.display = "none";
+                prevQuestion.style.fontWeight = "400";
+                prevArrowImage.style.transform = "rotate(180deg)"
+            }
+            prevItem = item;
+            //   
 
             allInfoDivs.forEach((currDiv) => {
                 if (currDiv !== infoDiv) {
                     currDiv.style.display = "none";
                     currDiv.previousElementSibling.querySelector(".question").style.fontWeight = "400";
-                    currDiv.previousElementSibling.querySelector(".image-arrow img").classList.remove("rotate180");
+                    currDiv.previousElementSibling.querySelector(".image-arrow img").style.transform = "rotate(0deg)"
                 }
             });
         }
     });
 });
-
-
